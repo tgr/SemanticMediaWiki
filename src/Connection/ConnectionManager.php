@@ -67,6 +67,15 @@ class ConnectionManager {
 			return self::$connectionProviders[$id];
 		}
 
+		// #4150
+		if ( !defined( 'SMW_VERSION' ) ) {
+			$setupCheck = new SetupCheck();
+
+			if ( $setupCheck->hasError() ) {
+				$setupCheck->showErrorAndAbort( $setupCheck->isCli() );
+			}
+		}
+
 		throw new RuntimeException( "{$id} is missing a registered connection provider" );
 	}
 
