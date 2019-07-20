@@ -3,6 +3,7 @@
 namespace SMW\Connection;
 
 use RuntimeException;
+use SMW\SetupCheck;
 
 /**
  * @license GNU GPL v2+
